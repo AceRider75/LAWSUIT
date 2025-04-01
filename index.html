@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lawyer - Sue Anyone Instantly!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 font-[Inter] min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl shadow-xl max-w-2xl w-full border border-white/20">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">AI Lawyer</h1>
+            <p class="text-lg text-gray-300">Instantly Sue Anyone!</p>
+            
+        </header>
+
+        <form id="sue-form" class="space-y-6">
+            <div>
+                <label for="defendant-name" class="block text-sm font-medium text-gray-300 mb-1">Who do you want to sue?</label>
+                <input type="text" id="defendant-name" name="defendant-name" required placeholder="e.g., My Annoying Neighbor" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-white placeholder-gray-400">
+            </div>
+
+            <div>
+                <label for="charge" class="block text-sm font-medium text-gray-300 mb-1">Select a Charge:</label>
+                <select id="charge" name="charge" required class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-white">
+                    <option value="" disabled selected>-- Choose a charge --</option>
+                    <option value="Stole my last slice of pizza">Stole my last slice of pizza</option>
+                    <option value="Looks too good">Looks too good</option>
+                    <option value="Breathing too loudly">Breathing too loudly</option>
+                    <option value="Existing too close to me">Existing too close to me</option>
+                    <option value="Having a better day than me">Having a better day than me</option>
+                    <option value="Using Comic Sans unironically">Using Comic Sans unironically</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="evidence-upload" class="block text-sm font-medium text-gray-300 mb-1">Upload "Evidence" (Optional Image):</label>
+                <input type="file" id="evidence-upload" name="evidence-upload" accept="image/*" class="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-red-600 file:text-white hover:file:bg-red-700 cursor-pointer">
+                <canvas id="evidence-canvas" class="mt-4 border border-gray-500 rounded-lg bg-gray-800 hidden w-full aspect-video"></canvas>
+                <p id="canvas-placeholder" class="mt-2 text-sm text-gray-400 text-center hidden">Evidence preview will appear here with official markings.</p>
+            </div>
+
+            <button type="button" id="generate-preview-button" class="w-full bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-blue-700 hover:to-indigo-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center space-x-2">
+                <span class="lucide">&#xed5c;</span> <span>Generate Lawsuit Preview</span>
+            </button>
+        </form>
+
+        <div id="lawsuit-display" class="mt-8 p-6 bg-gray-800 border border-gray-600 rounded-lg shadow-inner hidden">
+            <h2 class="text-xl font-semibold mb-4 text-center text-amber-300">Lawsuit Preview</h2>
+            <div id="fake-pdf" class="text-sm space-y-2 text-gray-300 font-mono max-h-60 overflow-y-auto p-2 border border-gray-700 rounded bg-gray-900/50">
+            </div>
+
+            <div id="email-section" class="mt-6 hidden">
+                 <label for="recipient-email" class="block text-sm font-medium text-gray-300 mb-1">Recipient's Email:</label>
+                 <input type="email" id="recipient-email" name="recipient-email" placeholder="friend@example.com" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-white placeholder-gray-400 mb-3">
+
+                 <button type="button" id="send-email-button" class="w-full bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-700 hover:to-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center space-x-2">
+                     <span class="lucide">&#xeed6;</span> <span>Send Lawsuit!</span>
+                 </button>
+                 <p id="email-status" class="mt-3 text-center font-semibold text-amber-400 h-5"></p> </div>
+        </div>
+
+    </div>
+
+    <div id="april-fools-modal" class="modal">
+        <div class="modal-content bg-gradient-to-br from-green-500 to-teal-600 text-white rounded-xl shadow-2xl">
+            <span class="close-button" onclick="document.getElementById('april-fools-modal').style.display='none'">&times;</span>
+            <h2 class="text-3xl font-bold mb-4">APRIL FOOLS!</h2>
+             <p class="text-lg mb-2">You've been legally pranked!</p>
+             <p class="mb-6">That email wasn't *really* sent (don't worry!).</p>
+             <p class="text-md font-semibold">Now go apologize before they *actually* sue YOU!</p>
+             <p class="mt-4 text-4xl">💀😂</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
